@@ -87,7 +87,8 @@ public class SegmentedControl: UIView {
         
         didSet {
             
-            let oldFrame = CGRect(x: segmentedControl.contentOffsetForSegment(at: oldValue).x, y: 0, width: segmentedControl.widthForSegment(at: oldValue), height: bounds.height)
+            guard selectedSegmentIndex >= 0 && selectedSegmentIndex < segmentedControl.numberOfSegments else { return }
+            
             let newFrame = CGRect(x: segmentedControl.contentOffsetForSegment(at: selectedSegmentIndex).x, y: 0, width: segmentedControl.widthForSegment(at: selectedSegmentIndex), height: bounds.height)
             
             if animated {
