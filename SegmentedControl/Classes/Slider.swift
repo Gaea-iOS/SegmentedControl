@@ -16,10 +16,10 @@ public class Slider: UIView {
         return view
     }()
     
-    convenience init(isSelected: Bool) {
+    public convenience init(isSelected: Bool) {
         self.init()
         addSubview(slider)
-        slider.isHidden = isSelected
+        slider.isHidden = !isSelected
     }
     
     public override var frame: CGRect {

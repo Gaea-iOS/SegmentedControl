@@ -13,7 +13,7 @@ public extension UISegmentedControl {
     var segmentSpacing: CGFloat {
         get {
             let image = dividerImage(forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-            return image?.size.width ?? 0
+            return image?.size.width ?? 1.0
         }
         set {
             if newValue > 0 {

@@ -17,7 +17,7 @@ public class Block: UIView {
         return view
     }()
     
-    convenience init(selected: Bool) {
+    public convenience init(selected: Bool) {
         self.init(frame: .zero)
         addSubview(block)
         if selected {

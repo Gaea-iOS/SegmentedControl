@@ -8,9 +8,7 @@
 
 import UIKit
 
-public class SegmentedView: UIView {
-    
-    public static var animatedDuration: TimeInterval = 0.3
+public class SegmentedControl: UIView {
     
     fileprivate let scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -30,8 +28,6 @@ public class SegmentedView: UIView {
     
     fileprivate let segmentedControl: UISegmentedControl = {
         let view = UISegmentedControl()
-        view.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 1.0, green: 0.4, blue: 0.6, alpha: 1)], for: .selected)
-        view.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)], for: .normal)
         view.apportionsSegmentWidthsByContent = true
         return view
     }()
@@ -54,11 +50,9 @@ public class SegmentedView: UIView {
         }
     }
     
-    public var itemWidths: [CGFloat] = [] {
-        didSet {
-            segmentedControl.itemWidths = itemWidths
-        }
-    }
+    public var automaticallyAdjustsItemWidth: Bool = false
+    
+    public var itemWidths: [CGFloat] = []
     
     public var segmentSpacing: CGFloat = 0.0 {
         didSet {
@@ -78,9 +72,16 @@ public class SegmentedView: UIView {
         segmentedControl.setTitleTextAttributes(attributes, for: state)
     }
     
-    public var segmentBackgroundView: (_ selected: Bool) -> UIView = Slider.init
+    public var segmentBackgroundView: ((_ selected: Bool) -> UIView)? {
+        didSet {
+            makeMaskViews()
+        }
+    }
     
     fileprivate var selectedSegmentMaskView: UIView?
+    
+    public var animatedDuration: TimeInterval = 0.3
+    public var animated: Bool = true
     
     public var selectedSegmentIndex: Int = 0 {
         
@@ -88,11 +89,13 @@ public class SegmentedView: UIView {
             
             let oldFrame = CGRect(x: segmentedControl.contentOffsetForSegment(at: oldValue).x, y: 0, width: segmentedControl.widthForSegment(at: oldValue), height: bounds.height)
             let newFrame = CGRect(x: segmentedControl.contentOffsetForSegment(at: selectedSegmentIndex).x, y: 0, width: segmentedControl.widthForSegment(at: selectedSegmentIndex), height: bounds.height)
-                    
-            UIView.animate(withDuration: SegmentedView.animatedDuration, animations: {
-                self.selectedSegmentMaskView?.frame = newFrame
-            }) { finished in
-                print("finished = \(finished)")
+            
+            if animated {
+                UIView.animate(withDuration: animatedDuration, animations: {
+                    self.selectedSegmentMaskView?.frame = newFrame
+                })
+            }else {
+                selectedSegmentMaskView?.frame = newFrame
             }
             
             let delta = segmentedControl.contentOffsetForSegment(at: selectedSegmentIndex).x - scrollView.contentOffset.x - overlap
@@ -132,15 +135,24 @@ public class SegmentedView: UIView {
     }
     
     public func reload() {
+        
+        if automaticallyAdjustsItemWidth {
+            let width = (bounds.width - CGFloat((segmentedControl.numberOfSegments - 1)) * segmentedControl.segmentSpacing) / CGFloat(segmentedControl.numberOfSegments)
+            segmentedControl.itemWidths = (0..<segmentedControl.numberOfSegments).map{ _ in width }
+        }else {
+            segmentedControl.itemWidths = itemWidths
+        }
+        
         scrollView.frame = bounds
         segmentedControl.frame = CGRect(x: 0, y: 0, width: segmentedControl.contentLength, height: bounds.height)
-        scrollView.contentSize = CGSize(width: max(segmentedControl.frame.width, bounds.width), height: bounds.height)
+        scrollView.contentSize = CGSize(width: segmentedControl.frame.width, height: bounds.height)
         maskHolderView.frame = segmentedControl.frame
         makeMaskViews()
+        segmentedControl.selectedSegmentIndex = selectedSegmentIndex
     }
 }
 
-private extension SegmentedView {
+private extension SegmentedControl {
 
     func setup() {
         addSubview(scrollView)
@@ -152,6 +164,12 @@ private extension SegmentedView {
     func makeMaskViews() {
         
         maskHolderView.removeAllSubviews()
+        selectedSegmentMaskView?.removeFromSuperview()
+        selectedSegmentMaskView = nil
+        
+        guard let segmentBackgroundView = segmentBackgroundView else {
+            return
+        }
         
         (0..<segmentedControl.numberOfSegments).forEach {
             let frame = CGRect(x: segmentedControl.contentOffsetForSegment(at: $0).x, y: 0, width: segmentedControl.widthForSegment(at: $0), height: segmentedControl.bounds.height)
@@ -166,8 +184,6 @@ private extension SegmentedView {
         maskView.frame = frame
         selectedSegmentMaskView = maskView
         maskHolderView.addSubview(maskView)
-        
-        segmentedControl.selectedSegmentIndex = selectedSegmentIndex
     }
     
     @objc func segmentedControlValueChanged(sender: UISegmentedControl) {
