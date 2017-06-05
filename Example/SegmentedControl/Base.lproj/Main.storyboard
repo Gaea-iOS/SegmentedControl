@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
                                 </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mB9-bC-pV8">
-                                <rect key="frame" x="15" y="398" width="315" height="29"/>
+                                <rect key="frame" x="30" y="491" width="315" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title=""/>
@@ -37,15 +37,76 @@
                                 </segments>
                                 <color key="tintColor" red="0.21176470589999999" green="0.71372549019999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ynG-k6-udu">
+                                <rect key="frame" x="15" y="170" width="345" height="300"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fa-FL-SIP">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="300"/>
+                                        <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cz5-Bg-V6q">
+                                        <rect key="frame" x="345" y="0.0" width="345" height="300"/>
+                                        <color key="backgroundColor" red="0.21176470589999999" green="0.71372549019999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-17-A18">
+                                        <rect key="frame" x="690" y="0.0" width="345" height="300"/>
+                                        <color key="backgroundColor" red="0.0" green="0.74509803919999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asv-uA-yjn">
+                                        <rect key="frame" x="1035" y="0.0" width="345" height="300"/>
+                                        <color key="backgroundColor" red="1" green="0.94117647059999998" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q60-X0-L8Q">
+                                        <rect key="frame" x="1380" y="0.0" width="345" height="300"/>
+                                        <color key="backgroundColor" red="1" green="0.94117647059999998" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2Fa-FL-SIP" firstAttribute="top" secondItem="ynG-k6-udu" secondAttribute="top" id="3hg-zT-0wm"/>
+                                    <constraint firstItem="2Fa-FL-SIP" firstAttribute="width" secondItem="ynG-k6-udu" secondAttribute="width" id="3lZ-DS-Vlg"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q60-X0-L8Q" secondAttribute="bottom" id="5fa-XY-XLH"/>
+                                    <constraint firstAttribute="bottom" secondItem="asv-uA-yjn" secondAttribute="bottom" id="BFk-9u-fBR"/>
+                                    <constraint firstItem="RNe-17-A18" firstAttribute="leading" secondItem="Cz5-Bg-V6q" secondAttribute="trailing" id="D6i-h0-Mti"/>
+                                    <constraint firstItem="asv-uA-yjn" firstAttribute="width" secondItem="ynG-k6-udu" secondAttribute="width" id="D7g-fl-oTU"/>
+                                    <constraint firstItem="Cz5-Bg-V6q" firstAttribute="top" secondItem="ynG-k6-udu" secondAttribute="top" id="Kip-ZH-8si"/>
+                                    <constraint firstAttribute="height" constant="300" id="KrJ-Ga-qRV"/>
+                                    <constraint firstItem="Q60-X0-L8Q" firstAttribute="leading" secondItem="asv-uA-yjn" secondAttribute="trailing" id="OY6-ut-C3H"/>
+                                    <constraint firstItem="asv-uA-yjn" firstAttribute="top" secondItem="ynG-k6-udu" secondAttribute="top" id="QHM-CK-OPP"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cz5-Bg-V6q" secondAttribute="bottom" id="V0m-Zl-Efv"/>
+                                    <constraint firstItem="asv-uA-yjn" firstAttribute="leading" secondItem="RNe-17-A18" secondAttribute="trailing" id="XBO-le-22H"/>
+                                    <constraint firstItem="RNe-17-A18" firstAttribute="top" secondItem="ynG-k6-udu" secondAttribute="top" id="YcZ-gu-GAC"/>
+                                    <constraint firstItem="Q60-X0-L8Q" firstAttribute="top" secondItem="ynG-k6-udu" secondAttribute="top" id="Z3I-kR-0yB"/>
+                                    <constraint firstItem="Cz5-Bg-V6q" firstAttribute="height" secondItem="ynG-k6-udu" secondAttribute="height" id="ZGE-GQ-79g"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q60-X0-L8Q" secondAttribute="trailing" id="ecN-nl-uzu"/>
+                                    <constraint firstItem="RNe-17-A18" firstAttribute="height" secondItem="ynG-k6-udu" secondAttribute="height" id="ezx-S1-zTn"/>
+                                    <constraint firstItem="2Fa-FL-SIP" firstAttribute="height" secondItem="ynG-k6-udu" secondAttribute="height" id="hNA-Ov-FAJ"/>
+                                    <constraint firstItem="RNe-17-A18" firstAttribute="width" secondItem="ynG-k6-udu" secondAttribute="width" id="i3c-3b-ucD"/>
+                                    <constraint firstAttribute="bottom" secondItem="2Fa-FL-SIP" secondAttribute="bottom" id="qNJ-bb-ONM"/>
+                                    <constraint firstItem="Q60-X0-L8Q" firstAttribute="height" secondItem="ynG-k6-udu" secondAttribute="height" id="sse-oF-b0P"/>
+                                    <constraint firstAttribute="bottom" secondItem="RNe-17-A18" secondAttribute="bottom" id="tTr-UA-px3"/>
+                                    <constraint firstItem="Q60-X0-L8Q" firstAttribute="width" secondItem="ynG-k6-udu" secondAttribute="width" id="vwb-oy-Se0"/>
+                                    <constraint firstItem="Cz5-Bg-V6q" firstAttribute="width" secondItem="ynG-k6-udu" secondAttribute="width" id="x2x-RA-Imf"/>
+                                    <constraint firstItem="2Fa-FL-SIP" firstAttribute="leading" secondItem="ynG-k6-udu" secondAttribute="leading" id="xZX-Dt-3yU"/>
+                                    <constraint firstItem="asv-uA-yjn" firstAttribute="height" secondItem="ynG-k6-udu" secondAttribute="height" id="xy7-no-SCU"/>
+                                    <constraint firstItem="Cz5-Bg-V6q" firstAttribute="leading" secondItem="2Fa-FL-SIP" secondAttribute="trailing" id="zAL-Ha-NT3"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="kJS-Cp-Vm6"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="39E-td-Ypx" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="6mp-ab-ArZ"/>
                             <constraint firstItem="39E-td-Ypx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="15" id="7XM-bj-MLP"/>
+                            <constraint firstItem="ynG-k6-udu" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="15" id="LiI-Om-SNb"/>
+                            <constraint firstAttribute="trailing" secondItem="ynG-k6-udu" secondAttribute="trailing" constant="15" id="WoE-LM-ozi"/>
                             <constraint firstAttribute="trailing" secondItem="39E-td-Ypx" secondAttribute="trailing" constant="15" id="YNT-Cf-xgK"/>
+                            <constraint firstItem="ynG-k6-udu" firstAttribute="top" secondItem="39E-td-Ypx" secondAttribute="bottom" constant="50" id="jLB-Us-ffl"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="scrollView" destination="ynG-k6-udu" id="bO3-Tb-OUC"/>
                         <outlet property="segmentedControl" destination="39E-td-Ypx" id="QG2-mc-4TA"/>
                         <outlet property="testSegmentedControl" destination="mB9-bC-pV8" id="71k-XV-uTb"/>
                     </connections>

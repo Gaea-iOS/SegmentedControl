@@ -530,10 +530,7 @@
 			baseConfigurationReference = B49924A9392ADDA072320109 /* Pods-SegmentedControl_Tests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = RML58CN62D;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -551,10 +548,7 @@
 			baseConfigurationReference = 1FA75F854DD1ECCF756F128D /* Pods-SegmentedControl_Tests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = RML58CN62D;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";

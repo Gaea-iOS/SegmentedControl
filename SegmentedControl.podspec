@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SegmentedControl'
-  s.version          = '0.1.0'
-  s.summary          = 'SegmentedControl is a replacement of UISegmentedControl, it's has similar interface, and easy to switch to from UISegmentedControl.'
+  s.version          = '0.1.1'
+  s.summary          = 'SegmentedControl is a replacement of UISegmentedControl.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+SegmentedControl is a replacement of UISegmentedControl, it has similar interface, and easy to switch to from UISegmentedControl.
                        DESC
 
   s.homepage         = 'https://github.com/Gaea-iOS/SegmentedControl'

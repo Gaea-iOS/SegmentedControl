@@ -79,9 +79,12 @@ public class SegmentedControl: UIView {
     }
     
     fileprivate var selectedSegmentMaskView: UIView?
+    fileprivate var selectedSegmentMaskViewIsMoving: Bool = false
     
     public var animatedDuration: TimeInterval = 0.3
     public var animated: Bool = true
+    
+    public var didSelect: ((Int) -> Void)? = nil
     
     public var selectedSegmentIndex: Int = 0 {
         
@@ -89,16 +92,23 @@ public class SegmentedControl: UIView {
             
             guard selectedSegmentIndex >= 0 && selectedSegmentIndex < segmentedControl.numberOfSegments else { return }
             
+            // 滑块滑动
             let newFrame = CGRect(x: segmentedControl.contentOffsetForSegment(at: selectedSegmentIndex).x, y: 0, width: segmentedControl.widthForSegment(at: selectedSegmentIndex), height: bounds.height)
             
             if animated {
-                UIView.animate(withDuration: animatedDuration, animations: {
+                selectedSegmentMaskViewIsMoving = true
+                UIView.animate(withDuration: animatedDuration, animations: { 
                     self.selectedSegmentMaskView?.frame = newFrame
+                }, completion: { _ in
+                    self.selectedSegmentMaskViewIsMoving = false
                 })
+                
             }else {
                 selectedSegmentMaskView?.frame = newFrame
             }
             
+            
+            // 看不见的部分要移动到看得见的地方来
             let delta = segmentedControl.contentOffsetForSegment(at: selectedSegmentIndex).x - scrollView.contentOffset.x - overlap
             if delta < 0 {
                 var contentOffset = scrollView.contentOffset
@@ -153,6 +163,36 @@ public class SegmentedControl: UIView {
     }
 }
 
+public extension SegmentedControl {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        guard animated && !selectedSegmentMaskViewIsMoving else {
+            return
+        }
+        
+        let offsetX = scrollView.contentOffset.x
+        let index = offsetX / scrollView.bounds.width
+        let preIndex = Int(index)
+        let nextIndex = preIndex + 1
+        
+        // 滑块滑动
+        let preIndexFrame = CGRect(x: segmentedControl.contentOffsetForSegment(at: preIndex).x, y: 0, width: segmentedControl.widthForSegment(at: preIndex), height: bounds.height)
+        let nextIndexFrame = CGRect(x: segmentedControl.contentOffsetForSegment(at: nextIndex).x, y: 0, width: segmentedControl.widthForSegment(at: nextIndex), height: bounds.height)
+        let deltaMinX = nextIndexFrame.minX - preIndexFrame.minX
+        let deltaWidth = nextIndexFrame.width - preIndexFrame.width
+
+        let minX = (index - CGFloat(preIndex)) * deltaMinX + preIndexFrame.minX
+        let width = (index - CGFloat(preIndex)) * deltaWidth + preIndexFrame.width
+        
+        let frame = CGRect(x: minX, y: 0, width: width, height: bounds.height)
+        
+        UIView.animate(withDuration: animatedDuration) {
+            self.selectedSegmentMaskView?.frame = frame
+        }
+    }
+}
+
 private extension SegmentedControl {
 
     func setup() {
@@ -189,6 +229,7 @@ private extension SegmentedControl {
     
     @objc func segmentedControlValueChanged(sender: UISegmentedControl) {
         selectedSegmentIndex = sender.selectedSegmentIndex
+        didSelect?(selectedSegmentIndex)
     }
 }
 
