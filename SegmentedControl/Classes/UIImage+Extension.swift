@@ -8,11 +8,11 @@
 
 import Foundation
 
-public extension UIImage {
+extension UIImage {
     
-    static func fromColor(_ color: UIColor, withSize size: CGSize) -> UIImage? {
+    static func from(_ color: UIColor) -> UIImage {
         
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
         
@@ -22,6 +22,6 @@ public extension UIImage {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
 }

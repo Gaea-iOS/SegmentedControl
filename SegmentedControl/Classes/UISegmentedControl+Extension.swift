@@ -17,7 +17,7 @@ public extension UISegmentedControl {
         }
         set {
             if newValue > 0 {
-                let image = UIImage.fromColor(.clear, withSize: CGSize(width: newValue, height: 1))!
+                let image = UIImage.from(.clear)
                 setDividerImage(image, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
             }else {
                 setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
@@ -31,7 +31,7 @@ public extension UISegmentedControl {
         }
         set {
             removeAllSegments()
-            newValue.forEach { insertSegment(withTitle: $0, at: $1, animated: true) }
+            newValue.enumerated().forEach { insertSegment(withTitle: $1, at: $0, animated: true) }
         }
     }
     
@@ -40,7 +40,7 @@ public extension UISegmentedControl {
             return (0..<numberOfSegments).map(widthForSegment)
         }
         set {
-            newValue.forEach(setWidth)
+            newValue.enumerated().forEach{setWidth($1, forSegmentAt: $0)}
         }
     }
     

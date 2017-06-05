@@ -34,7 +34,7 @@ public class SegmentedControl: UIView {
     
     public convenience init(items: [String]) {
         self.init(frame: .zero)
-        items.forEach { segmentedControl.insertSegment(withTitle: $0, at: $1, animated: true) }
+        items.enumerated().forEach { segmentedControl.insertSegment(withTitle: $1, at: $0, animated: true) }
     }
     
     public override var tintColor: UIColor! {

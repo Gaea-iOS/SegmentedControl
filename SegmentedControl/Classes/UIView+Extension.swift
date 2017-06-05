@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension UIView {
+extension UIView {
     
     func replaceSubview(at index: Int, withView view: UIView) {
         subviews[index].removeFromSuperview()
