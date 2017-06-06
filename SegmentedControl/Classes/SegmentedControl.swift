@@ -48,28 +48,11 @@ public class SegmentedControl: UIView {
     }
     
     @IBInspectable
-    public var items: String = "" {
-        didSet {
-            func flush(items: [String]) -> [String] {
-                return items.map{
-                    $0.trimmingCharacters(in: .whitespacesAndNewlines)
-                }
-            }
-            var newValue: [String] {
-                if items.contains(",") {
-                    return flush(items: items.components(separatedBy: ","))
-                }else if items.contains("|") {
-                    return flush(items: items.components(separatedBy: "|"))
-                }else if items.contains(" ") {
-                    return flush(items: items.components(separatedBy: " "))
-                }else {
-                    if items.characters.count > 0 {
-                        return [items]
-                    }else {
-                        return []
-                    }
-                }
-            }
+    public var items: [String] {
+        get {
+            return segmentedControl.items
+        }
+        set {
             segmentedControl.items = newValue
         }
     }
