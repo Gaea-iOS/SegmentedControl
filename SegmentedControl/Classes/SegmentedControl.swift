@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 public class SegmentedControl: UIView {
     
     fileprivate let scrollView: UIScrollView = {
@@ -37,6 +38,8 @@ public class SegmentedControl: UIView {
         items.enumerated().forEach { segmentedControl.insertSegment(withTitle: $1, at: $0, animated: true) }
     }
     
+    
+    @IBInspectable
     public override var tintColor: UIColor? {
         didSet {
             super.tintColor = tintColor
@@ -44,19 +47,39 @@ public class SegmentedControl: UIView {
         }
     }
     
-    public var items: [String] {
-        get {
-            return segmentedControl.items
-        }
-        set {
+    @IBInspectable
+    public var items: String = "" {
+        didSet {
+            func flush(items: [String]) -> [String] {
+                return items.map{
+                    $0.trimmingCharacters(in: .whitespacesAndNewlines)
+                }
+            }
+            var newValue: [String] {
+                if items.contains(",") {
+                    return flush(items: items.components(separatedBy: ","))
+                }else if items.contains("|") {
+                    return flush(items: items.components(separatedBy: "|"))
+                }else if items.contains(" ") {
+                    return flush(items: items.components(separatedBy: " "))
+                }else {
+                    if items.characters.count > 0 {
+                        return [items]
+                    }else {
+                        return []
+                    }
+                }
+            }
             segmentedControl.items = newValue
         }
     }
     
+    @IBInspectable
     public var automaticallyAdjustsItemWidth: Bool = true
     
     public var itemWidths: [CGFloat] = []
     
+    @IBInspectable
     public var segmentSpacing: CGFloat {
         get {
             return segmentedControl.segmentSpacing
@@ -66,6 +89,7 @@ public class SegmentedControl: UIView {
         }
     }
     
+    @IBInspectable
     public var overlap: CGFloat = 0
     
     public var contentInset: UIEdgeInsets {
@@ -91,10 +115,13 @@ public class SegmentedControl: UIView {
     fileprivate var selectedSegmentMaskViewIsMoving: Bool = false
     
     public var animatedDuration: TimeInterval = 0.3
+    
+    @IBInspectable
     public var animated: Bool = true
     
     public var didSelect: ((Int) -> Void)? = nil
     
+    @IBInspectable
     public var selectedSegmentIndex: Int = 0 {
         
         didSet {
