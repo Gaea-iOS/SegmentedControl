@@ -37,34 +37,43 @@ public class SegmentedControl: UIView {
         items.enumerated().forEach { segmentedControl.insertSegment(withTitle: $1, at: $0, animated: true) }
     }
     
-    public override var tintColor: UIColor! {
+    public override var tintColor: UIColor? {
         didSet {
             super.tintColor = tintColor
             segmentedControl.tintColor = .clear
         }
     }
     
-    public var items: [String] = [] {
-        didSet {
-            segmentedControl.items = items
+    public var items: [String] {
+        get {
+            return segmentedControl.items
+        }
+        set {
+            segmentedControl.items = newValue
         }
     }
     
-    public var automaticallyAdjustsItemWidth: Bool = false
+    public var automaticallyAdjustsItemWidth: Bool = true
     
     public var itemWidths: [CGFloat] = []
     
-    public var segmentSpacing: CGFloat = 0.0 {
-        didSet {
-            segmentedControl.segmentSpacing = segmentSpacing
+    public var segmentSpacing: CGFloat {
+        get {
+            return segmentedControl.segmentSpacing
+        }
+        set {
+            segmentedControl.segmentSpacing = newValue
         }
     }
     
     public var overlap: CGFloat = 0
     
-    public var contentInset: UIEdgeInsets = .zero {
-        didSet {
-            scrollView.contentInset = contentInset
+    public var contentInset: UIEdgeInsets {
+        get {
+            return scrollView.contentInset
+        }
+        set {
+            scrollView.contentInset = newValue
         }
     }
     
@@ -148,7 +157,7 @@ public class SegmentedControl: UIView {
     public func reload() {
         
         if automaticallyAdjustsItemWidth {
-            let width = (bounds.width - CGFloat((segmentedControl.numberOfSegments - 1)) * segmentedControl.segmentSpacing) / CGFloat(segmentedControl.numberOfSegments)
+            let width = (bounds.width - CGFloat((segmentedControl.numberOfSegments - 1)) * segmentedControl.segmentSpacing - contentInset.left - contentInset.right) / CGFloat(segmentedControl.numberOfSegments)
             segmentedControl.itemWidths = (0..<segmentedControl.numberOfSegments).map{ _ in width }
         }else {
             segmentedControl.itemWidths = itemWidths
@@ -175,6 +184,9 @@ public extension SegmentedControl {
         let index = offsetX / scrollView.bounds.width
         let preIndex = Int(index)
         let nextIndex = preIndex + 1
+        
+        guard preIndex >= 0 && preIndex < segmentedControl.numberOfSegments else { return }
+        guard nextIndex >= 0 && nextIndex < segmentedControl.numberOfSegments else { return }
         
         // 滑块滑动
         let preIndexFrame = CGRect(x: segmentedControl.contentOffsetForSegment(at: preIndex).x, y: 0, width: segmentedControl.widthForSegment(at: preIndex), height: bounds.height)
