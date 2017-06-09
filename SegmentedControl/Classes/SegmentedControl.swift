@@ -60,7 +60,11 @@ public class SegmentedControl: UIView {
     @IBInspectable
     public var automaticallyAdjustsItemWidth: Bool = true
     
-    public var itemWidths: [CGFloat] = []
+    public var itemWidths: [CGFloat] = [] {
+        didSet {
+            automaticallyAdjustsItemWidth = false
+        }
+    }
     
     @IBInspectable
     public var segmentSpacing: CGFloat {

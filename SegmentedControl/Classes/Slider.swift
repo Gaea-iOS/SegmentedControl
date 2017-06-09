@@ -10,6 +10,12 @@ import Foundation
 
 public class Slider: UIView {
     
+    public var sliderBackgroundColor: UIColor? {
+        didSet {
+            slider.backgroundColor = sliderBackgroundColor
+        }
+    }
+    
     private let slider: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.6, alpha: 1)

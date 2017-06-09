@@ -14,18 +14,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var testSegmentedControl: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
 
-//    private let items = ["最新1", "最新2", "最新3"/*, "最新4", "最新5", "最新6", "最新7", "最新8", "最新9", "最新10"*/]
+    private let items = ["最新1", "最新2", "最新3", "最新4"/*, "最新5", "最新6", "最新7", "最新8", "最新9", "最新10"*/]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        segmentedControl.items = items
-//        segmentedControl.itemWidths = [50,100,30,50,80,60,120,80,50,80]
-        
+        segmentedControl.items = items
+        segmentedControl.itemWidths = [50,100,30,50,/*80,60,120,80,50,80*/]
+        segmentedControl.automaticallyAdjustsItemWidth = false
         segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 1.0, green: 0.4, blue: 0.6, alpha: 1)], for: .selected)
         segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)], for: .normal)
 
-        segmentedControl.segmentBackgroundView = Block.init
+        segmentedControl.segmentBackgroundView = Slider.init
 //        segmentedControl.segmentSpacing = 10
 //        segmentedControl.overlap = 50
 //        segmentedControl.tintColor = .clear
