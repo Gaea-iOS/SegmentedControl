@@ -25,7 +25,9 @@ class ViewController: UIViewController {
         segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 1.0, green: 0.4, blue: 0.6, alpha: 1)], for: .selected)
         segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)], for: .normal)
 
-        segmentedControl.segmentBackgroundView = Slider.init
+        segmentedControl.segmentBackgroundView = {
+            Slider(isSelected: $0, color: .yellow, height: 5)
+        }
 //        segmentedControl.segmentSpacing = 10
 //        segmentedControl.overlap = 50
 //        segmentedControl.tintColor = .clear

@@ -10,28 +10,21 @@ import Foundation
 
 public class Slider: UIView {
     
-    public var sliderBackgroundColor: UIColor? {
-        didSet {
-            slider.backgroundColor = sliderBackgroundColor
-        }
-    }
+    private let slider = UIView()
+    private var siiderHeight: CGFloat = 2
     
-    private let slider: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.6, alpha: 1)
-        return view
-    }()
-    
-    public convenience init(isSelected: Bool) {
+    public convenience init(isSelected: Bool, color: UIColor = UIColor(red: 1.0, green: 0.4, blue: 0.6, alpha: 1), height: CGFloat = 2) {
         self.init()
         addSubview(slider)
+        slider.backgroundColor = color
+        siiderHeight = height
         slider.isHidden = !isSelected
     }
     
     public override var frame: CGRect {
         didSet {
             super.frame = frame
-            self.slider.frame = CGRect(x: 0, y: self.bounds.height - 2, width: self.bounds.width, height: 2)
+            self.slider.frame = CGRect(x: 0, y: self.bounds.height - siiderHeight, width: self.bounds.width, height: siiderHeight)
         }
     }
 }
