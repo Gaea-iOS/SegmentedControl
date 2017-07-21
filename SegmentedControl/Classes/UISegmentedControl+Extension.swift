@@ -31,7 +31,7 @@ public extension UISegmentedControl {
         }
         set {
             removeAllSegments()
-            newValue.enumerated().forEach { insertSegment(withTitle: $1, at: $0, animated: true) }
+            newValue.enumerated().forEach { insertSegment(withTitle: $1, at: $0, animated: false) }
         }
     }
     

@@ -54,6 +54,7 @@ public class SegmentedControl: UIView {
         }
         set {
             segmentedControl.items = newValue
+            reload()
         }
     }
     
