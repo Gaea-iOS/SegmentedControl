@@ -54,7 +54,6 @@ public class SegmentedControl: UIView {
         }
         set {
             segmentedControl.items = newValue
-            reload()
         }
     }
     
@@ -167,6 +166,10 @@ public class SegmentedControl: UIView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+    
+    public func updateItem(_ item: String, atIndex index: Int) {
+        segmentedControl.setTitle(item, forSegmentAt: index)
     }
     
     public func reload() {
