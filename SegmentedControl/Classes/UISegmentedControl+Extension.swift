@@ -27,7 +27,7 @@ public extension UISegmentedControl {
     
     var items: [String] {
         get {
-            return (0..<numberOfSegments).flatMap(titleForSegment)
+            return (0..<numberOfSegments).compactMap(titleForSegment)
         }
         set {
             removeAllSegments()

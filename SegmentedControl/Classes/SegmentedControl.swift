@@ -88,7 +88,7 @@ public class SegmentedControl: UIView {
         }
     }
     
-    public func setTitleTextAttributes(_ attributes: [AnyHashable : Any]?, for state: UIControlState) {
+    public func setTitleTextAttributes(_ attributes: [NSAttributedString.Key : Any]?, for state: UIControl.State) {
         segmentedControl.setTitleTextAttributes(attributes, for: state)
     }
     
