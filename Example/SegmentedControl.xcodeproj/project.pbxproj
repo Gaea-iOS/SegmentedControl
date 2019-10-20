@@ -215,12 +215,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = RML58CN62D;
+						DevelopmentTeam = G32N9Q2G5M;
 						LastSwiftMigration = 0820;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = RML58CN62D;
+						DevelopmentTeam = G32N9Q2G5M;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -231,6 +231,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -515,7 +516,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RML58CN62D;
+				DEVELOPMENT_TEAM = G32N9Q2G5M;
 				INFOPLIST_FILE = SegmentedControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -531,7 +532,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RML58CN62D;
+				DEVELOPMENT_TEAM = G32N9Q2G5M;
 				INFOPLIST_FILE = SegmentedControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -545,7 +546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B49924A9392ADDA072320109 /* Pods-SegmentedControl_Tests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = RML58CN62D;
+				DEVELOPMENT_TEAM = G32N9Q2G5M;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -563,7 +564,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FA75F854DD1ECCF756F128D /* Pods-SegmentedControl_Tests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = RML58CN62D;
+				DEVELOPMENT_TEAM = G32N9Q2G5M;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
