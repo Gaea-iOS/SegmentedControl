@@ -1,9 +1,9 @@
 {
   "name": "SegmentedControl",
-  "version": "0.1.0",
-  "summary": "A short description of SegmentedControl.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/SegmentedControl",
+  "version": "0.4.2",
+  "summary": "SegmentedControl is a replacement of UISegmentedControl.",
+  "description": "SegmentedControl is a replacement of UISegmentedControl, it has similar interface, and easy to switch to from UISegmentedControl.",
+  "homepage": "https://github.com/Gaea-iOS/SegmentedControl",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "wangxiaotao": "445242970@qq.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/SegmentedControl.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/Gaea-iOS/SegmentedControl.git",
+    "tag": "0.4.2"
   },
   "platforms": {
     "ios": "8.0"

@@ -54,6 +54,7 @@ public class SegmentedControl: UIView {
         }
         set {
             segmentedControl.items = newValue
+            setNeedsLayout()
             layoutIfNeeded()
         }
     }
@@ -61,6 +62,7 @@ public class SegmentedControl: UIView {
     @IBInspectable
     public var automaticallyAdjustsItemWidth: Bool = true {
         didSet {
+            setNeedsLayout()
             layoutIfNeeded()
         }
     }
@@ -68,6 +70,7 @@ public class SegmentedControl: UIView {
     public var itemWidths: [CGFloat] = [] {
         didSet {
             automaticallyAdjustsItemWidth = false
+            setNeedsLayout()
             layoutIfNeeded()
         }
     }
@@ -79,6 +82,7 @@ public class SegmentedControl: UIView {
         }
         set {
             segmentedControl.segmentSpacing = newValue
+            setNeedsLayout()
             layoutIfNeeded()
         }
     }
@@ -86,6 +90,7 @@ public class SegmentedControl: UIView {
     @IBInspectable
     public var overlap: CGFloat = 0 {
         didSet {
+            setNeedsLayout()
             layoutIfNeeded()
         }
     }
@@ -96,6 +101,7 @@ public class SegmentedControl: UIView {
         }
         set {
             scrollView.contentInset = newValue
+            setNeedsLayout()
             layoutIfNeeded()
         }
     }
@@ -107,6 +113,7 @@ public class SegmentedControl: UIView {
     public var segmentBackgroundView: ((_ selected: Bool) -> UIView)? {
         didSet {
             makeMaskViews()
+            setNeedsLayout()
             layoutIfNeeded()
         }
     }
