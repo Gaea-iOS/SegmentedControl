@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         segmentedControl.automaticallyAdjustsItemWidth = true
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 1.0, green: 0.4, blue: 0.6, alpha: 1)], for: .selected)
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)], for: .normal)
+        
 
         segmentedControl.segmentBackgroundView = {
             Slider(isSelected: $0, color: .yellow, size: CGSize(width: 20, height: 2))

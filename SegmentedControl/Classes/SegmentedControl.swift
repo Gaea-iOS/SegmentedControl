@@ -8,6 +8,20 @@
 
 import UIKit
 
+private extension UIImage {
+    convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        color.setFill()
+        UIRectFill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        guard let cgImage = image?.cgImage else { return nil }
+        self.init(cgImage: cgImage)
+    }
+}
+
 @IBDesignable
 public class SegmentedControl: UIView {
     
@@ -29,6 +43,8 @@ public class SegmentedControl: UIView {
     
     fileprivate let segmentedControl: UISegmentedControl = {
         let view = UISegmentedControl()
+        view.tintColor = .clear
+        view.setBackgroundImage(UIImage.from(.clear), for: .normal, barMetrics: .default)
         view.apportionsSegmentWidthsByContent = true
         return view
     }()

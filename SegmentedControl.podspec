@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SegmentedControl'
-  s.version          = '0.4.4'
+  s.version          = '0.4.6'
   s.summary          = 'SegmentedControl is a replacement of UISegmentedControl.'
 
 # This description is used to generate tags and improve search results.
